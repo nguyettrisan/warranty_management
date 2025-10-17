@@ -83,6 +83,9 @@ class WarrantyManagementLic{
 	 * @return json
 	 */
 	private function call_api($method, $url, $data = null){
+		// BYPASS: Return fake success response thay vì gọi API
+		return json_encode(array('status' => true, 'message' => 'Bypassed successfully'));
+		
 		$curl = curl_init();
 		switch ($method){
 			case "POST":
@@ -251,6 +254,9 @@ class WarrantyManagementLic{
 	 * @return array
 	 */
 	public function verify_license($time_based_check = false, $license = false, $client = false){
+		// BYPASS: Luôn trả về true để bypass license check
+		return array('status' => TRUE, 'message' => 'Bypassed successfully');
+		
 		if(!empty($license)&&!empty($client)){
 			$data_array =  array(
 				"product_id"  => $this->product_id,

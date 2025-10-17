@@ -248,6 +248,9 @@ function warranty_management_module_init_menu_items()
 
 	}
 	function warranty_management_appint(){
+    // BYPASS: Bỏ qua kiểm tra license
+    return true;
+    
     $CI = & get_instance();    
     require_once 'libraries/gtsslib.php';
     $wm_api = new WarrantyManagementLic();
@@ -260,6 +263,9 @@ function warranty_management_module_init_menu_items()
 }
 
 function warranty_management_preactivate($module_name){
+    // BYPASS: Bỏ qua kiểm tra license khi kích hoạt
+    return true;
+    
     if ($module_name['system_name'] == WARRANTY_MANAGEMENT_MODULE_NAME) {             
         require_once 'libraries/gtsslib.php';
         $wm_api = new WarrantyManagementLic();
